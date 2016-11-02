@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+body {
+  font-family: Open Sans;
+  .main {
+    button {
+      padding: 5px 15px;
+      color: #fff;
+      border: none;
+      &.btn-danger {
+        background: #ff0000;
+      }
+      &.btn-total {
+        background: #ffb200;
+      }
+      &.btn-success {
+        background: #5aaddd;
+      }
+
+      &.btn[disabled] {
+        opacity: 0.65;
+      }
+    }
+    max-width: 480px;
+    margin: 30px auto;
+    text-align: center;
+    .head-title {
+      h1 {
+        background: #5aaddd;
+        color: #fff;
+        padding: 10px;
+        border-radius: 3px;
+        margin: 5px 0;
+      }
+      p {
+        background: #ff0000;
+        color: #fff;
+        padding: 5px;
+        border-radius: 3px;
+        margin: 5px 0;
+        text-transform: uppercase;
+      }
+    }
+    .main-content {
+
+      .output-data {
+
+        table {
+          border: 1px solid #ccc;
+          max-width: 100%;
+          width: 100%;
+          table-layout: fixed;
+          border-collapse: collapse;
+        }
+
+        td, th {
+          width: 100%;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          border: 2px solid #ccc;
+        }
+        th {
+          border: 2px solid #5aaddd;
+          font-weight: 700;
+          color: #5aaddd;
+          padding: 5px 0;
+
+          input {
+            width: 100%;
+            padding: 5px 0;
+            font-weight: 700;
+            font-size: 18px;
+            border: none;
+            text-align: center;
+            &:focus {
+              box-shadow: none;
+              border: none;
+            }
+          }
+        }
+        td {
+          padding: 5px;
+        }
+      }
+
+      .input-data {
+        #form {
+
+          .title {
+            margin: 10px 0 0 0;
+            text-align: left;
+            font-weight: 700;
+          }
+
+          .form-group {
+            display: table-cell;
+            width: 16.67%;
+            input {
+              width: 92%;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+    .copyright {
+      position: absolute;
+      bottom: 20px;
+      margin: 0px auto;
+      text-align: center;
+      width: 100%;
+    }
+  }
+}

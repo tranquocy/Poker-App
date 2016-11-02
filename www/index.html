@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Poker App with AngularJS</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-app="pokerApp" ng-controller="PokerController">
+  <div class="main">
+    <div class="head-title">
+      <h1>Poker App with AngularJS</h1>
+      <p>Bài bạc là bác thằng bần!</p>
+    </div>
+    <div class="main-content">
+
+      <!-- Start out data -->
+      <div class="table-responsive output-data">
+        <table class="table">
+          <thead>
+          <tr data-ng-repeat="player in empPlayer">
+            <th>{{player.player1}}</th>
+            <th>{{player.player2}}</th>
+            <th>{{player.player3}}</th>
+            <th>{{player.player4}}</th>
+            <th class="action">
+              <button class="btn btn-danger" data-ng-click="deletePlayer(player.id, $index)" type="button">Xóa</button>
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr data-ng-repeat="point in empList">
+              <td id="point-user">{{point.point1}}</td>
+              <td id="point-user">{{point.point2}}</td>
+              <td id="point-user">{{point.point3}}</td>
+              <td id="point-user">{{point.point4}}</td>
+              <td class="action">
+                <button class="btn btn-danger" data-ng-click="deletePoint(point.id, $index)" type="button">Xóa</button>
+              </td>
+            </tr>
+            <!-- <script type="text/ng-template" id="display">
+
+            </script> -->
+            <!-- <script type="text/ng-template" id="edit">
+                <td><input type="text" ng-model="selected.point1" /></td>
+                <td><input type="text" ng-model="selected.point2" /></td>
+                <td><input type="text" ng-model="selected.point3" /></td>
+                <td><input type="text" ng-model="selected.point4" /></td>
+              <td>
+                  <button ng-click="saveContact($index)">Save</button>
+                  <button ng-click="reset()">Cancel</button>
+              </td>
+            </script> -->
+            <tr>
+              <td>
+                <p>{{sum1}}</p>
+              </td>
+              <td>
+                <p>{{sum2}}</p>
+              </td>
+              <td>
+                <p>{{sum3}}</p>
+              </td>
+              <td>
+                <p>{{sum4}}</p>
+              </td>
+              <td>
+                <button class="btn btn-total" ng-click="tinh()" type="button">Tổng</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!-- End out data -->
+
+      <!-- Start input data -->
+      <div class="input-data">
+        <form name="form1" id="form" novalidate >
+          <p class="title">Điểm từng ván</p>
+          <div class="form-group"
+            data-ng-class="{
+            'has-error': form.point.$dirty && form.point.$error.pattern,
+            'has-success': form.point.$dirty && form.point.$valid}">
+            <input class="form-control"
+            class="form-control"
+            type="number"
+            name = "point"
+            data-ng-model="addemp.point1"
+            placeholder="Điểm"
+            required>
+            <!-- Validate message -->
+            <p class="help-block" data-ng-show="form.point.$dirty && form.point.$error.pattern">Không hợp lệ!</p>
+          </div>
+          <div class="form-group"
+            data-ng-class="{
+            'has-error': form.point.$dirty && form.point.$error.pattern,
+            'has-success': form.point.$dirty && form.point.$valid}">
+            <input class="form-control"
+            class="form-control"
+            type="number"
+            name = "point"
+            data-ng-model="addemp.point2"
+
+            placeholder="Điểm"
+            required>
+            <!-- Validate message -->
+            <p class="help-block" data-ng-show="form.point.$dirty && form.point.$error.pattern">Không hợp lệ!</p>
+          </div>
+          <div class="form-group"
+            data-ng-class="{
+            'has-error': form.point.$dirty && form.point.$error.pattern,
+            'has-success': form.point.$dirty && form.point.$valid}">
+            <input class="form-control"
+            class="form-control"
+            type="number"
+            name = "point"
+            data-ng-model="addemp.point3"
+            placeholder="Điểm"
+            required>
+            <!-- Validate message -->
+            <p class="help-block" data-ng-show="form.point.$dirty && form.point.$error.pattern">Không hợp lệ!</p>
+          </div>
+          <div class="form-group"
+            data-ng-class="{
+            'has-error': form.point.$dirty && form.point.$error.pattern,
+            'has-success': form.point.$dirty && form.point.$valid}">
+            <input class="form-control"
+            class="form-control"
+            type="number"
+            name = "point"
+            data-ng-model="addemp.point4"
+            placeholder="Điểm"
+            required>
+            <!-- Validate message -->
+            <p class="help-block" data-ng-show="form.point.$dirty && form.point.$error.pattern">Không hợp lệ!</p>
+          </div>
+          <div class="form-group">
+            <p><button class="btn btn-success" ng-click="saveEmp()" data-ng-disabled="form1.$invalid">Thêm</button></p>
+          </div>
+        </form>
+
+        <!-- Input player name -->
+        <form name="form2" id="form" novalidate >
+          <p class="title">Nhập tên người chơi!</p>
+          <div class="form-group"
+            data-ng-class="{
+            'has-error': form.name.$dirty &&  (form.name.$error.required || form.name.$error.minlength || form.name.$error.maxlength),
+            'has-success': form.name.$valid}">
+            <input
+              class="form-control"
+              type="text"
+              data-ng-model="playeremp.player1"
+              name="name"
+              data-ng-minlength="0"
+              data-ng-maxlength="20"
+              placeholder="Tên"
+              required>
+              <p class="help-block" data-ng-show="form.name.$dirty && form.name.$error.required">Required!</p>
+              <p class="help-block" data-ng-show="form.name.$dirty && form.name.$error.minlength">Too short!</p>
+              <p class="help-block" data-ng-show="form.name.$dirty && form.name.$error.maxlength">Too looong!</p>
+          </div>
+          <div class="form-group"
+            data-ng-class="{
+            'has-error': form.name.$dirty &&  (form.name.$error.required || form.name.$error.minlength || form.name.$error.maxlength),
+            'has-success': form.name.$valid}">
+            <input
+              class="form-control"
+              type="text"
+              data-ng-model="playeremp.player2"
+              name="name"
+              data-ng-minlength="0"
+              data-ng-maxlength="20"
+              placeholder="Tên"
+              required>
+              <p class="help-block" data-ng-show="form.name.$dirty && form.name.$error.required">Required!</p>
+              <p class="help-block" data-ng-show="form.name.$dirty && form.name.$error.minlength">Too short!</p>
+              <p class="help-block" data-ng-show="form.name.$dirty && form.name.$error.maxlength">Too looong!</p>
+          </div>
+          <div class="form-group"
+            data-ng-class="{
+            'has-error': form.name.$dirty &&  (form.name.$error.required || form.name.$error.minlength || form.name.$error.maxlength),
+            'has-success': form.name.$valid}">
+            <input
+              class="form-control"
+              type="text"
+              data-ng-model="playeremp.player3"
+              name="name"
+              data-ng-minlength="0"
+              data-ng-maxlength="20"
+              placeholder="Tên"
+              required>
+              <p class="help-block" data-ng-show="form.name.$dirty && form.name.$error.required">Required!</p>
+              <p class="help-block" data-ng-show="form.name.$dirty && form.name.$error.minlength">Too short!</p>
+              <p class="help-block" data-ng-show="form.name.$dirty && form.name.$error.maxlength">Too looong!</p>
+          </div>
+          <div class="form-group"
+            data-ng-class="{
+            'has-error': form.name.$dirty &&  (form.name.$error.required || form.name.$error.minlength || form.name.$error.maxlength),
+            'has-success': form.name.$valid}">
+            <input
+              class="form-control"
+              type="text"
+              data-ng-model="playeremp.player4"
+              name="name"
+              data-ng-minlength="0"
+              data-ng-maxlength="20"
+              placeholder="Tên"
+              required>
+              <p class="help-block" data-ng-show="form.name.$dirty && form.name.$error.required">Required!</p>
+              <p class="help-block" data-ng-show="form.name.$dirty && form.name.$error.minlength">Too short!</p>
+              <p class="help-block" data-ng-show="form.name.$dirty && form.name.$error.maxlength">Too looong!</p>
+          </div>
+          <div class="form-group">
+            <p><button class="btn btn-success" ng-click="playersEmp()" data-ng-disabled="form2.$invalid">Thêm</button></p>
+          </div>
+        </form>
+      </div><!-- End input data -->
+    </div>
+  </div>
+  <script src="lib/ionic/js/angular/angular.min.js"></script>
+  <script src="node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
+  <script src="lib/angular-xeditable/dist/js/xeditable.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
