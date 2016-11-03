@@ -35,22 +35,10 @@
               <td id="point-user">{{point.point3}}</td>
               <td id="point-user">{{point.point4}}</td>
               <td class="action">
-                <button class="btn btn-danger" data-ng-click="deletePoint(point.id, $index)" type="button">Xóa</button>
+                <button class="btn btn-danger" data-ng-click="editPoints($index)" type="button">Sửa</button>
+
               </td>
             </tr>
-            <!-- <script type="text/ng-template" id="display">
-
-            </script> -->
-            <!-- <script type="text/ng-template" id="edit">
-                <td><input type="text" ng-model="selected.point1" /></td>
-                <td><input type="text" ng-model="selected.point2" /></td>
-                <td><input type="text" ng-model="selected.point3" /></td>
-                <td><input type="text" ng-model="selected.point4" /></td>
-              <td>
-                  <button ng-click="saveContact($index)">Save</button>
-                  <button ng-click="reset()">Cancel</button>
-              </td>
-            </script> -->
             <tr>
               <td>
                 <p>{{sum1}}</p>
@@ -70,6 +58,18 @@
             </tr>
           </tbody>
         </table>
+
+        <!-- Edit points form -->
+        <div class="edit-points">
+          <td><input type="text" ng-model="selectedEdit.point1" /></td>
+          <td><input type="text" ng-model="selectedEdit.point2" /></td>
+          <td><input type="text" ng-model="selectedEdit.point3" /></td>
+          <td><input type="text" ng-model="selectedEdit.point4" /></td>
+          <td>
+              <button ng-click="saveContact($index)">Save</button>
+              <button ng-click="reset()">Cancel</button>
+          </td>
+        </div>
       </div><!-- End out data -->
 
       <!-- Start input data -->
@@ -220,5 +220,6 @@
   <script src="node_modules/angular-local-storage/dist/angular-local-storage.min.js"></script>
   <script src="lib/angular-xeditable/dist/js/xeditable.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/edit.js"></script>
 </body>
 </html>

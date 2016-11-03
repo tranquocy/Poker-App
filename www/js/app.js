@@ -23,21 +23,20 @@
     $scope.addemp = {};
     $scope.saveEmp = function(){
       $scope.empList.push($scope.addemp);
+      console.log($scope.empList);
       $scope.resetpoint();
     };
     $scope.resetpoint = function() {
       $scope.addemp = {};
-      $scope.form.$setPristine();
     }
-    // //Display data
-    // $scope.getTemplate = function (point) {
-    //     if (point.point1 === $scope.addemp.point1) return 'edit';
-    //     else return 'display';
-    // };
-    // //Edit point
-    // $scope.editPoints = function (point) {
-    //     $scope.selected = angular.copy(point);
-    // };
+
+    // Edit point
+    $scope.editlist = [];
+    $scope.editpoint = {};
+    $scope.editPoints = function(index){
+      $scope.editlist.push($scope.editpoint);
+      $scope.selectedEdit = $scope.empList[index];
+    };
 
     // Delete point
     $scope.deletePoint = function (id, index) {
