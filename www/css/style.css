@@ -8,9 +8,12 @@ body {
     body .main button {
       padding: 5px 15px;
       color: #fff;
-      border: none; }
+      border: none;
+      width: 100%; }
       body .main button.btn-danger {
-        background: #ff0000; }
+        background: #ff0000;
+        width: 47%;
+        padding: 5px 1px; }
       body .main button.btn-total {
         background: #ffb200; }
       body .main button.btn-success {
@@ -36,6 +39,22 @@ body {
       width: 100%;
       table-layout: fixed;
       border-collapse: collapse; }
+      body .main .main-content .output-data table tr td {
+        position: relative;
+        line-height: 1px; }
+      body .main .main-content .output-data table tr input {
+        display: none; }
+      body .main .main-content .output-data table tr.editing span {
+        display: none; }
+      body .main .main-content .output-data table tr.editing input {
+        display: block; }
+      body .main .main-content .output-data table tr button.btn-success {
+        display: none; }
+      body .main .main-content .output-data table tr.editing .btn-danger {
+        display: none; }
+      body .main .main-content .output-data table tr.editing .btn-success {
+        display: block;
+        margin: 2px 0; }
     body .main .main-content .output-data td, body .main .main-content .output-data th {
       width: 100%;
       text-overflow: ellipsis;
@@ -46,7 +65,7 @@ body {
       border: 2px solid #5aaddd;
       font-weight: 700;
       color: #5aaddd;
-      padding: 5px 0; }
+      padding: 5px; }
       body .main .main-content .output-data th input {
         width: 100%;
         padding: 5px 0;
@@ -58,7 +77,11 @@ body {
           box-shadow: none;
           border: none; }
     body .main .main-content .output-data td {
-      padding: 5px; }
+      padding: 5px;
+      text-align: center; }
+      body .main .main-content .output-data td input {
+        width: 95%;
+        text-align: center; }
     body .main .main-content .input-data #form .title {
       margin: 10px 0 0 0;
       text-align: left;

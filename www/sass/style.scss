@@ -6,8 +6,11 @@ body {
       padding: 5px 15px;
       color: #fff;
       border: none;
+      width: 100%;
       &.btn-danger {
         background: #ff0000;
+        width: 47%;
+        padding: 5px 1px;
       }
       &.btn-total {
         background: #ffb200;
@@ -50,6 +53,42 @@ body {
           width: 100%;
           table-layout: fixed;
           border-collapse: collapse;
+
+          tr {
+
+            td {
+              position: relative;
+              line-height: 1px;
+
+            }
+
+            input {
+              display: none;
+            }
+
+            &.editing {
+              span {
+                display: none;
+              }
+
+              input {
+                display: block;
+              }
+            }
+
+            button.btn-success {
+              display: none;
+            }
+            &.editing {
+              .btn-danger {
+                display: none;
+              }
+              .btn-success {
+                display: block;
+                margin: 2px 0;
+              }
+            }
+          }
         }
 
         td, th {
@@ -63,7 +102,7 @@ body {
           border: 2px solid #5aaddd;
           font-weight: 700;
           color: #5aaddd;
-          padding: 5px 0;
+          padding: 5px;
 
           input {
             width: 100%;
@@ -80,6 +119,11 @@ body {
         }
         td {
           padding: 5px;
+          text-align: center;
+          input {
+            width: 95%;
+            text-align: center;
+          }
         }
       }
 

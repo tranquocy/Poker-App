@@ -1,7 +1,7 @@
 (function () {
   'use strict';
   angular
-    .module('pokerApp', ['LocalStorageModule', 'xeditable'])
+    .module('pokerApp', ['LocalStorageModule'])
     .controller('PokerController', PokerController);
 
   function PokerController($scope, localStorageService) {
@@ -30,13 +30,19 @@
       $scope.addemp = {};
     }
 
-    // Edit point
-    $scope.editlist = [];
-    $scope.editpoint = {};
+    // Edit pointselectedEdit
     $scope.editPoints = function(index){
-      $scope.editlist.push($scope.editpoint);
       $scope.selectedEdit = $scope.empList[index];
+      $scope.selected = index;
     };
+
+    $scope.savePoint = function(index) {
+      $scope.selected = false;
+    }
+
+    $scope.isSelected = function(index) {
+      return $scope.selected === index;
+    }
 
     // Delete point
     $scope.deletePoint = function (id, index) {
@@ -82,6 +88,18 @@
     // Delete point
     $scope.deletePlayer = function (id, index) {
       $scope.empPlayer.splice(index, 1);
+    }
+
+    // Edit Players
+    $scope.editPlayers = function(index) {
+      $scope.selectedEditPlayers = $scope.empPlayer[index];
+      $scope.selectedPlayers = index;
+    }
+    $scope.savePlayers = function(index) {
+      $scope.selectedPlayers = false;
+    }
+    $scope.isSelectedPlayers = function(index) {
+      return $scope.selectedPlayers === index;
     }
   };
 })();

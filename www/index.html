@@ -9,8 +9,8 @@
 <body ng-app="pokerApp" ng-controller="PokerController">
   <div class="main">
     <div class="head-title">
-      <h1>Poker App with AngularJS</h1>
-      <p>Bài bạc là bác thằng bần!</p>
+      <h1>Tính điểm đánh bài</h1>
+      <p>Bài bạc là bác thằng bần! Thua nhớ trả tiền</p>
     </div>
     <div class="main-content">
 
@@ -18,25 +18,52 @@
       <div class="table-responsive output-data">
         <table class="table">
           <thead>
-          <tr data-ng-repeat="player in empPlayer">
-            <th>{{player.player1}}</th>
-            <th>{{player.player2}}</th>
-            <th>{{player.player3}}</th>
-            <th>{{player.player4}}</th>
+          <tr data-ng-repeat="player in empPlayer" ng-class="{editing : isSelectedPlayers($index)}">
+            <th>
+              <span>{{player.player1}}</span>
+              <input type="text" ng-model="selectedEditPlayers.player1" />
+            </th>
+            <th>
+              <span>{{player.player2}}</span>
+              <input type="text" ng-model="selectedEditPlayers.player2" />
+            </th>
+            <th>
+              <span>{{player.player3}}</span>
+              <input type="text" ng-model="selectedEditPlayers.player3" />
+            </th>
+            <th>
+              <span>{{player.player4}}</span>
+              <input type="text" ng-model="selectedEditPlayers.player4" />
+            </th>
             <th class="action">
+              <button class="btn btn-danger" data-ng-click="editPlayers($index)" type="button">Sửa</button>
               <button class="btn btn-danger" data-ng-click="deletePlayer(player.id, $index)" type="button">Xóa</button>
+              <button class="btn btn-success" ng-click="savePlayers($index)">Save</button>
             </th>
           </tr>
           </thead>
           <tbody>
-            <tr data-ng-repeat="point in empList">
-              <td id="point-user">{{point.point1}}</td>
-              <td id="point-user">{{point.point2}}</td>
-              <td id="point-user">{{point.point3}}</td>
-              <td id="point-user">{{point.point4}}</td>
+            <tr data-ng-repeat="point in empList" class="point-data" ng-class="{editing : isSelected($index)}">
+              <td id="point-user">
+                <span>{{point.point1}}</span><br>
+                <input type="number" ng-model="selectedEdit.point1" />
+              </td>
+              <td id="point-user">
+                <span>{{point.point2}}</span><br>
+                <input type="number" ng-model="selectedEdit.point2" />
+              </td>
+              <td id="point-user">
+                <span>{{point.point3}}</span><br>
+                <input type="number" ng-model="selectedEdit.point3" />
+              </td>
+              <td id="point-user">
+                <span>{{point.point4}}</span><br>
+                <input type="number" ng-model="selectedEdit.point4" />
+              </td>
               <td class="action">
                 <button class="btn btn-danger" data-ng-click="editPoints($index)" type="button">Sửa</button>
-
+                <button class="btn btn-danger" data-ng-click="deletePoint(point.id, $index)" type="button">Xóa</button>
+                <button class="btn btn-success" ng-click="savePoint($index)">Save</button>
               </td>
             </tr>
             <tr>
@@ -58,18 +85,6 @@
             </tr>
           </tbody>
         </table>
-
-        <!-- Edit points form -->
-        <div class="edit-points">
-          <td><input type="text" ng-model="selectedEdit.point1" /></td>
-          <td><input type="text" ng-model="selectedEdit.point2" /></td>
-          <td><input type="text" ng-model="selectedEdit.point3" /></td>
-          <td><input type="text" ng-model="selectedEdit.point4" /></td>
-          <td>
-              <button ng-click="saveContact($index)">Save</button>
-              <button ng-click="reset()">Cancel</button>
-          </td>
-        </div>
       </div><!-- End out data -->
 
       <!-- Start input data -->
