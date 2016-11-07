@@ -20,6 +20,10 @@ body {
         background: #5aaddd; }
       body .main button.btn[disabled] {
         opacity: 0.65; }
+      @media (max-width: 360px) {
+        body .main button {
+          font-size: 10px;
+          padding: 5px; } }
     body .main .head-title h1 {
       background: #5aaddd;
       color: #fff;
@@ -87,11 +91,15 @@ body {
       text-align: left;
       font-weight: 700; }
     body .main .main-content .input-data #form .form-group {
-      display: table-cell;
-      width: 16.67%; }
+      display: inline-block;
+      width: 18.67%; }
       body .main .main-content .input-data #form .form-group input {
         width: 92%;
         text-align: center; }
+      @media (max-width: 480px) {
+        body .main .main-content .input-data #form .form-group {
+          display: inline-block;
+          width: 18.67%; } }
     body .main .copyright {
       position: absolute;
       bottom: 20px;
