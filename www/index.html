@@ -20,6 +20,9 @@
           <thead>
           <tr data-ng-repeat="player in empPlayer" ng-class="{editing : isSelectedPlayers($index)}">
             <th>
+              <span>STT</span>
+            </th>
+            <th>
               <span>{{player.player1}}</span>
               <input type="text" ng-model="selectedEditPlayers.player1" />
             </th>
@@ -44,6 +47,9 @@
           </thead>
           <tbody>
             <tr data-ng-repeat="point in empList" class="point-data" ng-class="{editing : isSelected($index)}">
+              <td>
+                <span>{{$index + 1}}</span>
+              </td>
               <td id="point-user">
                 <span>{{point.point1}}</span><br>
                 <input type="number" ng-model="selectedEdit.point1" />
@@ -67,6 +73,9 @@
               </td>
             </tr>
             <tr>
+              <td>
+
+              </td>
               <td>
                 <p>{{sum1}}</p>
               </td>
@@ -97,7 +106,8 @@
             'has-success': form.point.$dirty && form.point.$valid}">
             <input class="form-control"
             class="form-control"
-            type="number"
+            type="text"
+            data-ng-pattern="/[0-9\-\+]/"
             name = "point"
             data-ng-model="addemp.point1"
             placeholder="Điểm"
@@ -111,7 +121,8 @@
             'has-success': form.point.$dirty && form.point.$valid}">
             <input class="form-control"
             class="form-control"
-            type="number"
+            type="text"
+            data-ng-pattern="/[0-9\-\+]/"
             name = "point"
             data-ng-model="addemp.point2"
 
@@ -126,7 +137,8 @@
             'has-success': form.point.$dirty && form.point.$valid}">
             <input class="form-control"
             class="form-control"
-            type="number"
+            type="text"
+            data-ng-pattern="/[0-9\-\+]/"
             name = "point"
             data-ng-model="addemp.point3"
             placeholder="Điểm"
@@ -140,7 +152,8 @@
             'has-success': form.point.$dirty && form.point.$valid}">
             <input class="form-control"
             class="form-control"
-            type="number"
+            type="text"
+            data-ng-pattern="/[0-9\-\+]/"
             name = "point"
             data-ng-model="addemp.point4"
             placeholder="Điểm"

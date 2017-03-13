@@ -23,7 +23,6 @@
     $scope.addemp = {};
     $scope.saveEmp = function(){
       $scope.empList.push($scope.addemp);
-      console.log($scope.empList);
       $scope.resetpoint();
     };
     $scope.resetpoint = function() {
@@ -74,7 +73,6 @@
     };
 
     //Add player
-    $scope.playeremp = {};
     $scope.playersEmp = function(){
       $scope.empPlayer.push($scope.playeremp);
       console.log($scope.empPlayer);
