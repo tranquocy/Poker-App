@@ -43,6 +43,21 @@ body {
       width: 100%;
       table-layout: fixed;
       border-collapse: collapse; }
+      body .main .main-content .output-data table .number {
+        background: #ff0000;
+        color: #fff;
+        border: 2px solid #5aaddd; }
+      body .main .main-content .output-data table .total-number {
+        word-break: keep-all;
+        white-space: pre-line;
+        line-height: 16px;
+        font-size: 13px;
+        margin: 0; }
+        body .main .main-content .output-data table .total-number p {
+          margin: 0; }
+      body .main .main-content .output-data table .last-row .number-item {
+        font-weight: 700;
+        color: #5aaddd; }
       body .main .main-content .output-data table tr td {
         position: relative;
         line-height: 1px; }
@@ -106,5 +121,3 @@ body {
       margin: 0px auto;
       text-align: center;
       width: 100%; }
-
-/*# sourceMappingURL=style.css.map */

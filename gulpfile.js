@@ -13,17 +13,14 @@ var paths = {
 
 gulp.task('default', ['sass']);
 
-gulp.task('sass', function(done) {
-  gulp.src('./scss/ionic.app.scss')
-    .pipe(sass())
-    .on('error', sass.logError)
-    .pipe(gulp.dest('./www/css/'))
-    .pipe(minifyCss({
-      keepSpecialComments: 0
-    }))
-    .pipe(rename({ extname: '.min.css' }))
-    .pipe(gulp.dest('./www/css/'))
-    .on('end', done);
+gulp.task('sass', function () {
+  return gulp.src('./www/sass/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./www/css'));
+});
+
+gulp.task('sass:watch', function () {
+  gulp.watch('./www/sass/*.scss', ['sass']);
 });
 
 gulp.task('watch', function() {

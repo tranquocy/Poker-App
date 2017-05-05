@@ -29,20 +29,6 @@
       $scope.addemp = {};
     }
 
-    // Edit pointselectedEdit
-    $scope.editPoints = function(index){
-      $scope.selectedEdit = $scope.empList[index];
-      $scope.selected = index;
-    };
-
-    $scope.savePoint = function(index) {
-      $scope.selected = false;
-    }
-
-    $scope.isSelected = function(index) {
-      return $scope.selected === index;
-    }
-
     // Delete point
     $scope.deletePoint = function (id, index) {
       $scope.empList.splice(index, 1);
@@ -75,7 +61,6 @@
     //Add player
     $scope.playersEmp = function(){
       $scope.empPlayer.push($scope.playeremp);
-      console.log($scope.empPlayer);
       $scope.resetplayer();
     };
     $scope.resetplayer = function() {
@@ -86,6 +71,20 @@
     // Delete point
     $scope.deletePlayer = function (id, index) {
       $scope.empPlayer.splice(index, 1);
+    }
+
+    // Edit pointselectedEdit
+    $scope.editPoints = function(index){
+      $scope.selectedEdit = $scope.empList[index];
+      $scope.selected = index;
+    };
+
+    $scope.savePoint = function(index) {
+      $scope.selected = false;
+    }
+
+    $scope.isSelected = function(index) {
+      return $scope.selected === index;
     }
 
     // Edit Players

@@ -58,12 +58,37 @@ body {
           table-layout: fixed;
           border-collapse: collapse;
 
+          .number {
+            background: #ff0000;
+            color: #fff;
+            border: 2px solid #5aaddd;
+          }
+
+          .total-number {
+            word-break: keep-all;
+            white-space: pre-line;
+            line-height: 16px;
+            font-size: 13px;
+            margin: 0;
+
+            p {
+              margin: 0;
+            }
+          }
+
+          .last-row {
+            .number-item {
+              font-weight: 700;
+              color: #5aaddd;
+              font-size: 18px;
+            }
+          }
+
           tr {
 
             td {
               position: relative;
               line-height: 1px;
-
             }
 
             input {
